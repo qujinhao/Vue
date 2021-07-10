@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        /*显示、隐藏的过渡效果  -->*/
+        .jj-enter-active, .jj-leave-active {
+            transition: opacity 1s;
+        }
+
+        /*
+        隐藏时的样式
+        */
+        .jj-enter, .jj-leave-to {
+            opacity: 0;
+        }
+
+
+        /*
+        显示的过滤效果
+        */
+        .xx-enter-active {
+            transition: all 1s;
+        }
+
+        /*
+        隐藏过滤效果
+        */
+        .xx-leave-active {
+            transition: all 3s;
+        }
+        /*
+        隐藏时的样式
+        */
+        .xx-enter, .xx-leave-to{
+            opacity: 0;
+            transform: translateX(20px);
+        }
+    </style>
+</head>
+<body>
+<div id="test">
+    <button @click="isShow = !isShow">toggle</button>
+    <transition name="jj">
+        <p v-show="isShow">hello</p>
+    </transition>
+</div>
+<div id="test2">
+    <button @click="isShow = !isShow">toggle</button>
+    <transition name="xx">
+        <p v-show="isShow">hello</p>
+    </transition>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    new Vue({
+        el: "#test",
+        data: {
+            isShow: true
+        }
+    })
+    new Vue({
+        el: "#test2",
+        data: {
+            isShow: true
+        }
+    })
+</script>
+</body>
+</html>

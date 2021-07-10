@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="test">
+    <button @click="destoryVM">destory vm</button>
+    <p v-show="isShow">qqqjjhh</p>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#test',
+        data:{
+            isShow:true
+        },
+        //1.初始化阶段
+        beforeCreate(){
+          console.log('beforeCreate()')
+        },
+        created(){
+            console.log('create()')
+        },
+        beforeMount(){
+            console.log('beforeMount()')
+        },
+    //    初始化显示之后立即调用
+        mounted(){
+           this.intervalId = setInterval(() =>{
+               console.log('-----')
+                this.isShow = !this.isShow
+            },1000)
+        },
+        //2.更新阶段
+        beforeUpdate(){
+            console.log('beforeUpdate()')
+        },
+        updated(){
+            console.log('updated()')
+        },
+
+
+        //3.死亡阶段
+        //vue周期死亡前
+        beforeDestroy(){
+          clearInterval(this.intervalId)
+        },
+        destroy(){
+            console.log('destroy()')
+        },
+        methods:{
+            destoryVM:function (){
+            //    干掉vm
+                this.$destroy()
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

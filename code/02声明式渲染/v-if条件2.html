@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app-3">
+    <p v-if="type==='A'">现在你看到我了</p>
+    <p v-else-if="type==='B'">我躲起来了</p>
+    <p v-else-if="type==='C'">我没躲起来</p>
+    <p v-else>我们全出来了</p>
+</div>
+<script>
+    var app3 = new Vue({
+        el:'#app-3',
+        data:{
+            type:"B"
+        }
+    })
+</script>
+</body>
+</html>

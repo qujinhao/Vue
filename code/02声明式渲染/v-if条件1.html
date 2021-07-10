@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<!--
+v-if是元素适当的被销毁跟重建
+-->
+    <div id="app-3">
+        <p v-if="seen">现在你看到我了</p>
+        <p v-else>我躲起来了</p>
+    </div>
+    <script>
+        var app3 = new Vue({
+            el:'#app-3',
+            data:{
+                seen:true
+            }
+        })
+    </script>
+</body>
+</html>

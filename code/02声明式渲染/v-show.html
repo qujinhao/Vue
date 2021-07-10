@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+
+<!--
+v-show也是依据条件进行展示元素，但是带有v-show的会始终渲染并保留在Dom中
+v-show只是简单切换元素的css属性的display
+-->
+<div id="app-2">
+        <span v-show="ok">
+            我是V-show
+        </span>
+</div>
+<script>
+    var Vm = new Vue({
+        el:'#app-2',
+        data:{
+            ok:true
+        }
+    })
+</script>
+</body>
+</html>

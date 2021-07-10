@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="demo">
+    姓：<input type="text" placeholder="Firest name" v-model="firstname"><br>
+    名：<input type="text" placeholder="Last name" v-model="lastname"><br>
+    姓名1（单向）：<input type="text" v-model="fullname1"><br>
+    姓名2（单向）：<input type="text" v-model="fullname2"><br>
+    姓名3（双向）：<input type="text" v-model="fullname3"><br>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#demo',
+        data:{
+            firstname:'a',
+            lastname:'b',
+            // fullname1:'a'+'b'
+            fullname2:"a"+' '+'b'
+        },
+        computed:{
+            //初始化执行、相关的data属性数据发生改变
+            fullname1:function (){ //计算属性中的方法,方法的返回值作为属性值
+                return this.firstname + this.lastname
+            },
+            fullname3:{
+                //回调函数：1.你定义了  2.你没有调用 3.但最终执行了
+                //什么时候调用？  用来做什么？
+
+                //回调函数 当需要读取当前属性值时回调 得到当前属性的值
+                get(){
+                    return this.firstname +' '+ this.lastname
+                },
+                //监视当前属性值改变时回调，更新相关的属性数据
+                set(value){ //value就是fullname3的最新属性值
+                    const names = value.split(' ')
+                    this.firstname = names[0]
+                    this.lastname = names[1]
+                }
+            }
+        },
+        watch:{  //配置监视
+            //firstname发生改变
+            firstname: function (newValue,olValue){
+                this.fullname2 = newValue + '' +this.lastname
+            }
+        }
+    })
+    vm.$watch('lastname',function (newValue,olValue){
+    //    更新fullname2
+        this.fullname2 = this.firstname + ' ' + newValue
+    })
+</script>
+</body>
+</html>

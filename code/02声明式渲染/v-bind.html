@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<!--
+v-bind attribute 被称为指令。指令带有前缀 v-，
+以表示它们是 Vue 提供的特殊 attribute。可能你已经猜到了，
+它们会在渲染的 DOM 上应用特殊的响应式行为。
+在这里，该指令的意思是：“将这个元素节点的 title attribute 和
+ Vue 实例的 message property 保持一致”。
+
+强制绑定
+-->
+    <div id="app-2">
+        <span v-bind:title="message">
+            鼠标悬停几秒查看此处动态绑定的提示信息！
+        </span>
+    </div>
+    <script>
+        var Vm = new Vue({
+            el:'#app-2',
+            data:{
+                message:'页面加载于' + new Date().toLocaleString()
+            }
+        })
+    </script>
+</body>
+</html>

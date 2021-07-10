@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{message}}</p>
+        <p>{{message.toUpperCase()}}</p>
+        <p v-html="message"></p>
+        <p v-text="message"></p>
+        <img v-bind:src="imgurl" alt="">
+        <button v-on:click="test">打我</button>
+        <button @click="test">打我啊</button>
+        <button @click="test2(message)">打我啊</button>
+    </div>
+<script src="../js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            // message:'qjh'
+            message:'<a href="https:www.baidu.com">qjh</ahref>',
+            imgurl:'https://cn.vuejs.org/'
+        },
+        methods:{
+            test:function (){
+                alert(11)
+            },
+            test2:function (content){
+                alert(content)
+            }
+        }
+    })
+</script>
+</body>
+</html>

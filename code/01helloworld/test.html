@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{message}}{{name}}
+    </div>
+    <script>
+        var app =new Vue({
+            //元素
+            el:'#app',
+            //保存数据
+            data:{
+                message:'Hello Vue!',
+                name:'qjh'
+            }
+        })
+    </script>
+</body>
+</html>

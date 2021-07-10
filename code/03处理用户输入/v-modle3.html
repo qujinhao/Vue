@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="checkbox" id="check1" value="qjh" v-model="picked">
+        <label for="check1">qjh</label>
+        <input type="checkbox" id="check2" value="czx" v-model="picked">
+        <label for="check2">czx</label><br>
+        <span>picked:{{picked}}</span><br>
+        <button @click="submit">提交</button>
+    </div>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                picked:[]
+            },
+            methods:{
+                submit:function (){
+                    console.log(this.picked)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

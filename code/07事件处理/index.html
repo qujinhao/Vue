@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<!--
+$event:代表事件对象
+-->
+<div id="example">
+    <h2>绑定监听</h2>
+    <button @click="test1">test1</button>
+    <button @click="test2('qjh')">test2</button>
+    <button @click="test3">test3</button>
+    <button @click="test4(1,$event)">test4</button>
+
+    <h2>事件修饰符</h2>
+    <div style="width:200px;height: 200px; background: red;" @click="test5">
+<!--
+停止事件冒泡: .stop
+ @click.stop="test6"
+
+ 阻止事件默认行为  .prevent
+@click.prevent="test7"
+-->
+        <div style="width:100px;height: 100px; background: blue;" @click.stop="test6"></div>
+    </div>
+    <a href="https:www.baidu.com" @click.prevent="test7">去百度</a>
+
+
+    <h2>按键修饰符</h2>
+    <input type="text" @keyup="test8">
+    <input type="text" @keyup.13="test9">
+    <input type="text" @keyup.enter="test9">
+
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#example',
+        data: {},
+        methods: {
+            test1() {
+                alert('test1')
+            },
+            test2(mesg) {
+                alert(mesg)
+            },
+            test3: function (event) {
+                alert(event.target.innerHTML)
+                // alert(33)
+            },
+            test4: function (num, event) {
+                alert(num + '---' + event.target.innerHTML)
+            },
+            test5:function (){
+                alert('out')
+            },
+            test6:function (){
+                alert('inn')
+            },
+            test7:function (){
+                alert('点击了')
+            },
+            test8:function (){
+                if(event.keyCode === 13){
+                    alert(event.target.value)
+                }
+
+            },
+            test9:function (){
+                alert(event.target.value)
+            }
+        }
+
+    })
+
+</script>
+</body>
+</html>
